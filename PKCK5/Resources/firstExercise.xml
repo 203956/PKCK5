@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="firstExercise.css" type="text/css"?>
+<!--<!DOCTYPE dokument SYSTEM "firstExercise.dtd"[
+<!ENTITY autor1 "Paweł Ograbek">
+<!ENTITY autor2 "Kamil Kaźmierczak">
+<!ENTITY zadanie "Zadanie 2">
+]> -->
+
+<dokument 
+xmlns="http://www.example.org/types"
+xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" 
+xs:schemaLocation="http://www.example.org/types secondExercise.xsd">
+    
+    <nagłówek>
+        <opis>Zadanie 5</opis>
+        <autorzy_dokumentu>
+            <autor_dokumentu indeks="203956">
+                Paweł Ograbek
+            </autor_dokumentu>
+            <autor_dokumentu indeks="203901">
+                Kamil Kaźmierczak
+            </autor_dokumentu>
+        </autorzy_dokumentu>
+    </nagłówek>
+    
+    <biblioteka>
+        <nazwa>Czytaj Wszystkim!</nazwa>
+        <adres>
+            <ulica>Radwańska</ulica>
+            <numer>124</numer>
+            <miejscowość>Łódź</miejscowość>
+        </adres>
+        
+        <działy>
+            <dział id="dd" nazwa_działu="dla_dzieci" />
+            <dział id="dm" nazwa_działu="dla_młodzieży" />
+            <dział id="hr" nazwa_działu="horror" />
+            <dział id="bg" nazwa_działu="biografia" />
+            <dział id="fn" nazwa_działu="fantasy" />
+            <dział id="pn" nazwa_działu="popularnonaukowe" />               
+        </działy>
+        
+        <dany_dział id_działu="dd">
+            <książki>
+                <książka id="001">
+                    <tytuł>Jakaś książka</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Magdalena_Tulli"/>
+                        <autor nazwa_autora="Marek_Bieńczyk"/>
+                    </autorzy>
+                    <ilość_stron>340</ilość_stron>
+                    <data_wydania dzień="05" miesiąc="04" rok="2013" />
+                </książka>
+                <książka id="002">
+                    <tytuł>Jakaś książka 2</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Marek_Bieńczyk"/>
+                    </autorzy>
+                    <ilość_stron>198</ilość_stron>
+                    <data_wydania dzień="11" miesiąc="12" rok="2017" />
+                </książka>
+                <książka id="003">
+                    <tytuł>Jakaś książka 3</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Magdalena_Tulli"/>
+                        <autor nazwa_autora="Marek_Bieńczyk"/>
+                        <autor nazwa_autora="Joanna_Bator"/>
+                    </autorzy>
+                    <ilość_stron>567</ilość_stron>
+                    <data_wydania dzień="01" miesiąc="01" rok="2001" />
+                </książka>
+            </książki>
+        </dany_dział>
+        
+       <dany_dział id_działu="dm">
+            <książki>
+                <książka id="004">
+                    <tytuł>Jakaś książka 4</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Michał_Witkowski"/>
+                        <autor nazwa_autora="Marek_Bieńczyk"/>
+                    </autorzy>
+                    <ilość_stron>336</ilość_stron>
+                    <data_wydania dzień="09" miesiąc="08" rok="2018" />
+                </książka>
+                <książka id="005">
+                    <tytuł>Jakaś książka 5</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Magdalena_Tulli"/>
+                        <autor nazwa_autora="Marek_Bieńczyk"/>
+                        <autor nazwa_autora="Joanna_Bator"/>
+                    </autorzy>
+                    <ilość_stron>1258</ilość_stron>
+                    <data_wydania dzień="09" miesiąc="09" rok="2017" />
+                </książka>
+                <książka id="006">
+                    <tytuł>Jakaś książka 6</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Magdalena_Tulli"/>
+                        <autor nazwa_autora="Joanna_Bator"/>
+                        <autor nazwa_autora="Olga_Tokarczuk"/>
+                    </autorzy>
+                    <ilość_stron>1569</ilość_stron>
+                    <data_wydania dzień="07" miesiąc="07" rok="2017" />
+                </książka>
+                <książka id="007">
+                    <tytuł>Jakaś książka 7</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Joanna_Bator"/>
+                        <autor nazwa_autora="Magdalena_Tulli"/>
+                    </autorzy>
+                    <ilość_stron>458</ilość_stron>
+                    <data_wydania dzień="06" miesiąc="06" rok="2016" />
+                </książka>
+                <książka id="008">
+                    <tytuł>Jakaś książka 8</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Paweł_Huelle"/>
+                        <autor nazwa_autora="Marek_Bieńczyk"/>
+                    </autorzy>
+                    <ilość_stron>589</ilość_stron>
+                    <data_wydania dzień="05" miesiąc="05" rok="2015" />
+                </książka>
+                <książka id="009">
+                    <tytuł>Jakaś książka 9</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Joanna_Bator"/>
+                    </autorzy>
+                    <ilość_stron>300</ilość_stron>
+                    <data_wydania dzień="04" miesiąc="04" rok="2014" />
+                </książka>
+                <książka id="010">
+                    <tytuł>Jakaś książka 10</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Magdalena_Tulli"/>
+                    </autorzy>
+                    <ilość_stron>222</ilość_stron>
+                    <data_wydania dzień="12" miesiąc="12" rok="2012" />
+                </książka>
+                <książka id="011">
+                    <tytuł>Jakaś książka 11</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Magdalena_Tulli"/>
+                        <autor nazwa_autora="Marek_Bieńczyk"/>
+                    </autorzy>
+                    <ilość_stron>458</ilość_stron>
+                    <data_wydania dzień="13" miesiąc="01" rok="2016" />
+                </książka>
+            </książki>
+        </dany_dział>
+        
+        <dany_dział id_działu="hr">
+            <książki>
+                <książka id="012">
+                    <tytuł>Jakaś książka 12</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Paweł_Huelle"/>
+                    </autorzy>
+                    <ilość_stron>213</ilość_stron>
+                    <data_wydania dzień="01" miesiąc="02" rok="2012" />
+                </książka>
+                <książka id="013">
+                    <tytuł>Jakaś książka 13</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Paweł_Huelle"/>
+                        <autor nazwa_autora="Marek_Bieńczyk"/>
+                    </autorzy>
+                    <ilość_stron>357</ilość_stron>
+                    <data_wydania dzień="03" miesiąc="04" rok="2015" />
+                </książka>
+                <książka id="014">
+                    <tytuł>Jakaś książka 14</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Michał_Witkowski"/>
+                        <autor nazwa_autora="Marek_Bieńczyk"/>
+                    </autorzy>
+                    <ilość_stron>578</ilość_stron>
+                    <data_wydania dzień="06" miesiąc="07" rok="2018" />
+                </książka>
+                <książka id="015">
+                    <tytuł>Jakaś książka 15</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Paweł_Huelle"/>
+                        <autor nazwa_autora="Michał_Witkowski"/>
+                        <autor nazwa_autora="Jacek_Dukaj"/>
+                    </autorzy>
+                    <ilość_stron>777</ilość_stron>
+                    <data_wydania dzień="09" miesiąc="11" rok="2013" />
+                </książka>
+                <książka id="016">
+                    <tytuł>Jakaś książka 16</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Antoni_Libera"/>
+                    </autorzy>
+                    <ilość_stron>234</ilość_stron>
+                    <data_wydania dzień="11" miesiąc="11" rok="2011" />
+                </książka>
+            </książki>
+        </dany_dział>
+        
+        <dany_dział id_działu="bg">
+            <książki>
+                <książka id="017">
+                    <tytuł>Jakaś książka 17</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Michał_Witkowski"/>
+                    </autorzy>
+                    <ilość_stron>150</ilość_stron>
+                    <data_wydania dzień="12" miesiąc="11" rok="1999" />
+                </książka>
+            </książki>
+        </dany_dział>
+        
+        <dany_dział id_działu="fn">
+            <książki>
+                <książka id="018">
+                    <tytuł>Jakaś książka 18</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Jakub_Żulczyk"/>
+                    </autorzy>
+                    <ilość_stron>567</ilość_stron>
+                    <data_wydania dzień="09" miesiąc="01" rok="2000" />
+                </książka>
+                <książka id="019">
+                    <tytuł>Jakaś książka 19</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Jakub_Żulczyk"/>
+                        <autor nazwa_autora="Wiesław_Myśliwski"/>
+                    </autorzy>
+                    <ilość_stron>765</ilość_stron>
+                    <data_wydania dzień="01" miesiąc="11" rok="2001" />
+                </książka>
+                <książka id="020">
+                    <tytuł>Jakaś książka 20</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Jakub_Żulczyk"/>
+                        <autor nazwa_autora="Wiesław_Myśliwski"/>
+                        <autor nazwa_autora="Olga_Tokarczuk"/>
+                    </autorzy>
+                    <ilość_stron>876</ilość_stron>
+                    <data_wydania dzień="02" miesiąc="12" rok="2002" />
+                </książka>
+                <książka id="021">
+                    <tytuł>Jakaś książka 21</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Michał_Witkowski"/>
+                    </autorzy>
+                    <ilość_stron>555</ilość_stron>
+                    <data_wydania dzień="09" miesiąc="08" rok="2003" />
+                </książka>
+                <książka id="022">
+                    <tytuł>Jakaś książka 22</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Michał_Witkowski"/>
+                        <autor nazwa_autora="Antoni_Libera"/>
+                    </autorzy>
+                    <ilość_stron>766</ilość_stron>
+                    <data_wydania dzień="04" miesiąc="04" rok="2004" />
+                </książka>
+                <książka id="023">
+                    <tytuł>Jakaś książka 23</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Michał_Witkowski"/>
+                        <autor nazwa_autora="Antoni_Libera"/>
+                        <autor nazwa_autora="Jacek_Dukaj"/>
+                    </autorzy>
+                    <ilość_stron>1999</ilość_stron>
+                    <data_wydania dzień="05" miesiąc="05" rok="2005" />
+                </książka>
+            </książki>
+        </dany_dział>
+        
+        <dany_dział id_działu="pn">
+            <książki>
+                <książka id="024">
+                    <tytuł>Jakaś książka 24</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Jacek_Dukaj"/>
+                        <autor nazwa_autora="Joanna_Bator"/>
+                    </autorzy>
+                    <ilość_stron>500</ilość_stron>
+                    <data_wydania dzień="09" miesiąc="12" rok="1991" />
+                </książka>
+                <książka id="025">
+                    <tytuł>Jakaś książka 25</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Magdalena_Tulli"/>
+                    </autorzy>
+                    <ilość_stron>250</ilość_stron>
+                    <data_wydania dzień="08" miesiąc="08" rok="2018" />
+                </książka>
+                <książka id="026">
+                    <tytuł>Jakaś książka 26</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Marek_Bieńczyk"/>
+                    </autorzy>
+                    <ilość_stron>300</ilość_stron>
+                    <data_wydania dzień="05" miesiąc="05" rok="2005" />
+                </książka>
+                <książka id="027">
+                    <tytuł>Jakaś książka 27</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Joanna_Bator"/>
+                    </autorzy>
+                    <ilość_stron>150</ilość_stron>
+                    <data_wydania dzień="07" miesiąc="07" rok="2007" />
+                </książka>
+                <książka id="028">
+                    <tytuł>Jakaś książka 28</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Paweł_Huelle"/>
+                        <autor nazwa_autora="Jacek_Dukaj"/>
+                    </autorzy>
+                    <ilość_stron>575</ilość_stron>
+                    <data_wydania dzień="09" miesiąc="02" rok="2007" />
+                </książka>
+                <książka id="029">
+                    <tytuł>Jakaś książka 29</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Antoni_Libera"/>
+                    </autorzy>
+                    <ilość_stron>350</ilość_stron>
+                    <data_wydania dzień="01" miesiąc="11" rok="2013" />
+                </książka>
+                <książka id="030">
+                    <tytuł>Jakaś książka 30</tytuł>
+                    <autorzy> 
+                        <autor nazwa_autora="Antoni_Libera"/>
+                        <autor nazwa_autora="Michał_Witkowski"/>
+                        <autor nazwa_autora="Jacek_Dukaj"/>
+                    </autorzy>
+                    <ilość_stron>1250</ilość_stron>
+                    <data_wydania dzień="01" miesiąc="01" rok="2000" />
+                </książka>
+            </książki>
+        </dany_dział>
+    </biblioteka>
+</dokument>

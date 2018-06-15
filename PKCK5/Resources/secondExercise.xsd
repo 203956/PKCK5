@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified"
+           targetNamespace="http://www.example.org/types"
+           xmlns:type="http://www.example.org/types"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">  
+    
+    <xs:complexType name="dokumentType">
+        <xs:sequence>
+            <xs:element name="nagłówek" type="type:nagłówekType" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="biblioteka" type="type:bibliotekaType" minOccurs="1" maxOccurs="unbounded">
+                <xs:key name="działKey">
+                    <xs:selector xpath="type:działy/type:dział"/>
+                    <xs:field xpath="@id"/>
+                </xs:key>
+                <xs:keyref name="działRef" refer="type:działKey">
+                    <xs:selector xpath="type:dany_dział"/>
+                    <xs:field xpath="@id_działu"/>
+                </xs:keyref>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="nagłówekType">
+        <xs:sequence>
+            <xs:element name="opis" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="autorzy_dokumentu" type="type:autorzy_dokumentuType" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="autorzy_dokumentuType">
+        <xs:sequence>
+            <xs:element name="autor_dokumentu" type="type:autor_dokumentuType" minOccurs="2" maxOccurs="2"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="autor_dokumentuType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="indeks" use="required" type="type:indeksType"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    
+    <xs:simpleType name="indeksType">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:pattern value="[1-9][0-9][0-9][0-9][0-9][0-9]"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="bibliotekaType">
+        <xs:sequence>
+            <xs:element name="nazwa" type="xs:string"/>
+            <xs:element name="adres" type="type:adresType"/>
+            <xs:element name="działy" type="type:działyType"/>
+            <xs:element name="dany_dział" type="type:dany_działType" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="adresType">
+        <xs:sequence>
+            <xs:element name="ulica" type="xs:string"/>
+            <xs:element name="numer" type="xs:string"/>
+            <xs:element name="miejscowość" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="działyType">
+        <xs:sequence>
+            <xs:element name="dział" type="type:działType" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:attributeGroup name="id_nazwa_attr">
+        <xs:attribute name="id" use="required" type="type:idType"/>
+        <xs:attribute name="nazwa_działu" use="required" type="type:nazwa_działuType"/>
+    </xs:attributeGroup>
+    
+    <xs:simpleType name="idType">
+        <xs:restriction base="xs:string">
+            <xs:length value="2"/>
+            <xs:pattern value="[a-z][a-z]"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="nazwa_działuType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="dla_dzieci"/>
+            <xs:enumeration value="dla_młodzieży"/>
+            <xs:enumeration value="horror"/>
+            <xs:enumeration value="fantasy"/>
+            <xs:enumeration value="biografia"/>
+            <xs:enumeration value="popularnonaukowe"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="działType">
+        <xs:attributeGroup ref="type:id_nazwa_attr"/>
+    </xs:complexType>
+    
+    <xs:complexType name="dany_działType">
+        <xs:all>
+            <xs:element name="książki" type="type:książkiType" minOccurs="0"/>
+        </xs:all>
+        <xs:attribute name="id_działu" use="required" type="type:idType"/>
+    </xs:complexType>
+    
+    <xs:complexType name="książkiType">
+        <xs:sequence>
+            <xs:element name="książka" type="type:książkaType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="książkaType">
+        <xs:sequence>
+            <xs:element name="tytuł" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="autorzy" type="type:autorzyType" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="ilość_stron" type="xs:positiveInteger" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="data_wydania" type="type:data_wydaniaType" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute name="id" use="required" type="type:id_książkaType"/>
+    </xs:complexType>
+    
+    <xs:simpleType name="id_książkaType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9][0-9][0-9]"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="autorzyType">
+        <xs:sequence>
+            <xs:element name="autor" type="type:autorType" minOccurs="1" maxOccurs="3"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="autorType">
+        <xs:attribute name="nazwa_autora" use="required" type="type:nazwa_autoraType"/>
+    </xs:complexType>
+    
+    <xs:simpleType name="nazwa_autoraType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Magdalena_Tulli"/>
+            <xs:enumeration value="Marek_Bieńczyk"/>
+            <xs:enumeration value="Joanna_Bator"/>
+            <xs:enumeration value="Paweł_Huelle"/>
+            <xs:enumeration value="Jacek_Dukaj"/>
+            <xs:enumeration value="Antoni_Libera"/>
+            <xs:enumeration value="Michał_Witkowski"/>
+            <xs:enumeration value="Olga_Tokarczuk"/>
+            <xs:enumeration value="Wiesław_Myśliwski"/>
+            <xs:enumeration value="Jakub_Żulczyk"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="data_wydaniaType">
+        <xs:attributeGroup ref="type:data_wydaniaAttr"/>
+    </xs:complexType>
+    
+    <xs:attributeGroup name="data_wydaniaAttr">
+        <xs:attribute name="dzień" use="optional" type="type:dzieńType"/>
+        <xs:attribute name="miesiąc" use="required" type="type:miesiącType"/>
+        <xs:attribute name="rok" use="required" type="type:rokType"/>
+    </xs:attributeGroup>
+    
+    <xs:simpleType name="dzieńType">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="31"/>
+            <xs:pattern value="[0-3][0-9]"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="miesiącType">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="12"/>
+            <xs:pattern value="[0-1][0-9]"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="rokType">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:minInclusive value="1500"/>
+            <xs:maxInclusive value="2018"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:element name="dokument" type="type:dokumentType"/>
+    
+</xs:schema>
