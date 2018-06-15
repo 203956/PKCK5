@@ -95,6 +95,12 @@ namespace PKCK5
                 return;
             }
 
+            if (IloscStronBox.Text == String.Empty)
+            {
+                MessageBox.Show("Nie podano ilości stron książki!", "Błąd!");
+                return;
+            }
+
             int number;
             if (!int.TryParse(IloscStronBox.Text, out number))
             {
@@ -102,43 +108,49 @@ namespace PKCK5
                 return;
             }
 
-            if (IloscStronBox.Text == String.Empty)
-            {
-                MessageBox.Show("Nie podano ilości stron książki!", "Błąd!");
-                return;
-            }
-
             if (DataWydaniaBox.Text == String.Empty)
             {
                 MessageBox.Show("Nie podano daty wydania książki!", "Błąd!");
                 return;
-            } else
-            {
-                tempCharTable = DataWydaniaBox.Text.ToCharArray();
-                if(int.Parse(String.Concat(tempCharTable[6], tempCharTable[7], tempCharTable[8], tempCharTable[9])) < 1500 || int.Parse(String.Concat(tempCharTable[6], tempCharTable[7], tempCharTable[8], tempCharTable[9])) > 2018)
-                {
-                    MessageBox.Show("Podano zły rok wydania książki!", "Błąd!");
-                    return;
-                }
-                if (int.Parse(String.Concat(tempCharTable[3], tempCharTable[4])) < 1 || int.Parse(String.Concat(tempCharTable[3], tempCharTable[4])) > 12)
-                {
-                    MessageBox.Show("Podano zły miesiąc wydania książki!", "Błąd!");
-                    return;
-                }
-                if (int.Parse(String.Concat(tempCharTable[0], tempCharTable[1])) < 1 || int.Parse(String.Concat(tempCharTable[0], tempCharTable[1])) > 31)
-                {
-                    MessageBox.Show("Podano zły dzień wydania książki!", "Błąd!");
-                    return;
-                }
             }
 
-            if (Autor1Box.Text == String.Empty && Autor2Box.Text == String.Empty && Autor3Box.Text == String.Empty)
+            tempCharTable = DataWydaniaBox.Text.ToCharArray();
+            if (int.Parse(String.Concat(tempCharTable[6], tempCharTable[7], tempCharTable[8], tempCharTable[9])) < 1500 || int.Parse(String.Concat(tempCharTable[6], tempCharTable[7], tempCharTable[8], tempCharTable[9])) > 2018)
+            {
+                MessageBox.Show("Podano zły rok wydania książki!", "Błąd!");
+                return;
+            }
+
+            if (int.Parse(String.Concat(tempCharTable[3], tempCharTable[4])) < 1 || int.Parse(String.Concat(tempCharTable[3], tempCharTable[4])) > 12)
+            {
+                MessageBox.Show("Podano zły miesiąc wydania książki!", "Błąd!");
+                return;
+            }
+
+            if (int.Parse(String.Concat(tempCharTable[0], tempCharTable[1])) < 1 || int.Parse(String.Concat(tempCharTable[0], tempCharTable[1])) > 31)
+            {
+                MessageBox.Show("Podano zły dzień wydania książki!", "Błąd!");
+                return;
+            }
+
+            if ((Autor1Box.Text == String.Empty && Autor2Box.Text == String.Empty && Autor3Box.Text == String.Empty) ||
+                (Autor1Box.Text.Equals("Brak") && Autor2Box.Text.Equals("Brak") && Autor3Box.Text.Equals("Brak")) ||
+                (Autor1Box.Text.Equals("Brak") && Autor2Box.Text.Equals("Brak") && Autor3Box.Text == String.Empty) ||
+                (Autor1Box.Text.Equals("Brak") && Autor2Box.Text == String.Empty && Autor3Box.Text == String.Empty) ||
+                (Autor1Box.Text == String.Empty && Autor2Box.Text.Equals("Brak") && Autor3Box.Text == String.Empty) ||
+                (Autor1Box.Text == String.Empty && Autor2Box.Text == String.Empty && Autor3Box.Text.Equals("Brak")))
             {
                 MessageBox.Show("Nie podano autora!", "Błąd!");
                 return;
             }
 
-            if (Autor1Box.Text.Equals("None") && Autor2Box.Text.Equals("None") && Autor3Box.Text.Equals("None"))
+            if (Autor1Box.Text.Equals("Brak") && Autor2Box.Text.Equals("Brak") && Autor3Box.Text.Equals("Brak"))
+            {
+                MessageBox.Show("Nie podano autora!", "Błąd!");
+                return;
+            }
+
+            if (Autor1Box.Text.Equals("Brak") && Autor2Box.Text.Equals("Brak") && Autor3Box.Text == String.Empty)
             {
                 MessageBox.Show("Nie podano autora!", "Błąd!");
                 return;
@@ -162,7 +174,7 @@ namespace PKCK5
                 return;
             }
 
-            if (!Autor1Box.Text.Equals("None") && Autor1Box.Text != String.Empty)
+            if (!Autor1Box.Text.Equals("Brak") && Autor1Box.Text != String.Empty)
             {
                 tempAutorList.Add(new Autor()
                 {
@@ -170,7 +182,7 @@ namespace PKCK5
                 });
             }
 
-            if (!Autor2Box.Text.Equals("None") && Autor2Box.Text != String.Empty)
+            if (!Autor2Box.Text.Equals("Brak") && Autor2Box.Text != String.Empty)
             {
                 tempAutorList.Add(new Autor()
                 {
@@ -178,7 +190,7 @@ namespace PKCK5
                 });
             }
 
-            if (!Autor3Box.Text.Equals("None") && Autor3Box.Text != String.Empty)
+            if (!Autor3Box.Text.Equals("Brak") && Autor3Box.Text != String.Empty)
             {
                 tempAutorList.Add(new Autor()
                 {
